@@ -61,7 +61,6 @@ Give it some time ...... Breathe in .. Breathe out.
 Node should start a development server on your local machine.  
 You should be able to view TinyHouse in your browser at localhost://3000 ( unless you opened it on another port )
 
-https://media.giphy.com/media/lMameLIF8voLu8HxWV/giphy.gif
 #### Thats it 🥳 🥳 !!
 
 <!-- Celebration gif -->
