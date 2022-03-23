@@ -11,6 +11,8 @@ Tiny House is a typical Vacation Rental Site. Think AirBNB. I starting building 
 Tiny House has been built using HTML , CSS , React Js FrontEnd framework , MUI ( Material UI ) component library on the front end and The Firebase backend as a service on the back end. Stripe was used to power the payments.
 When I started building TinyHouse, I was familiar with most of the above technologies, as a result, there was less of a learning curve and I could concentrate on writing cleaner code. 
 
+While building TinyHouse, my main objective was to test my UI skills, and thus, I have attempted to create as close a copy to the original app as possible. For the most part, I have succeeded at this task.
+
 # Technical Overview
 
 ## Technologies and Tools used.
