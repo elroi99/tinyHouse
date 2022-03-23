@@ -49,17 +49,28 @@ When I started building TinyHouse, I was familiar with most of the above technol
 
 ## Installation Instructions
 1. Get a copy of the project on your local machine by running the following command
-	 `git clone https://github.com/elroi99/atlas-clone.git`
+	 `git clone https://github.com/elroi99/tinyHouse.git`
  2. Enter the project directory 
-	 `cd atlas-clone`
- 3. install dependencies 
+	 `cd tinyHouse`
+ 3. install dependencies using npm
 	 `npm install`
  4. Run the project 
 	 `npm start`
 	 
 Give it some time ...... Breathe in .. Breathe out.  
 Node should start a development server on your local machine.  
-You should be able to view Atlas in your browser at localhost://3000 ( unless you opened it on another port )
+You should be able to view TinyHouse in your browser at localhost://3000 ( unless you opened it on another port )
+
+https://media.giphy.com/media/lMameLIF8voLu8HxWV/giphy.gif
+#### Thats it 🥳 🥳 !!
+
+<!-- Celebration gif -->
+<br/>
+ <img src="https://media.giphy.com/media/lMameLIF8voLu8HxWV/giphy.gif" wiidth="300px" height="300px" />
+ 
+ 
+ ## Acknowledgements
+- This project is a clone of [TinyHouse](https://www.tinyhouse.app/) ! Visit them and give them some love 
 
 
 
