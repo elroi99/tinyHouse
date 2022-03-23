@@ -37,19 +37,32 @@ While building TinyHouse, my main objective was to test my UI skills, and thus, 
 - React Router
 - Firebase
 - Git 
+- Netlify
 - VSCode 
 - Terminal
 
 
 <br/>
+<!-- 
+The process for installing and running tinyHouse on the local machine is more complicated because we use netlify functions in this project
+it involves forking the project to your own repo , connecting netlify cli to that repo  , and then starting the development server ( react + netlify fn's) 
+using netlify cli instead of npm start. -- I am not sure of the complete instruction set.
 
 # Running the code on your local machine
 
 ## Dependencies
 - Node.JS -- Make sure you have Node.js installed on your machine. 
 - NPM ( Node Package Manager ) -- We will be using Node.js and NPM to run the project.
+- Netlify CLI ( Needed to run the Netlify Serverless Functions locally ) 
 
 ## Installation Instructions
+### Part 1 ( Install Netlify CLI globally using NPM )
+1. Install Netlify CLI globally on your local machine
+	`npm install netlify-cli -g`
+
+
+
+### Part 2 ( Install and run TinyHouse )
 1. Get a copy of the project on your local machine by running the following command
 	 `git clone https://github.com/elroi99/tinyHouse.git`
  2. Enter the project directory 
@@ -63,7 +76,7 @@ Give it some time ...... Breathe in .. Breathe out.
 Node should start a development server on your local machine.  
 You should be able to view TinyHouse in your browser at localhost://3000 ( unless you opened it on another port )
 
-#### Thats it 🥳 🥳 !!
+#### Thats it 🥳 🥳 !! -->
 
 <!-- Celebration gif -->
 <br/>
@@ -72,6 +85,5 @@ You should be able to view TinyHouse in your browser at localhost://3000 ( unles
  
  ## Acknowledgements
 - This project is a clone of [TinyHouse](https://www.tinyhouse.app/) ! Visit them and give them some love 
-
 
 
