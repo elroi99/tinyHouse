@@ -43,13 +43,9 @@ While building TinyHouse, my main objective was to test my UI skills, and thus, 
 
 
 <br/>
-<!-- 
-The process for installing and running tinyHouse on the local machine is more complicated because we use netlify functions in this project
-it involves forking the project to your own repo , connecting netlify cli to that repo  , and then starting the development server ( react + netlify fn's) 
-using netlify cli instead of npm start. -- I am not sure of the complete instruction set.
 
-# Check out my other project
-[Atlas](https://github.com/elroi99/atlas-clone)
+# Check out another one of my projects [Atlas](https://github.com/elroi99/atlas-clone)
+
 
 # Running the code on your local machine
 
@@ -88,7 +84,7 @@ Give it some time ...... Breathe in .. Breathe out.
 Node should start a development server on your local machine.  
 You should be able to view TinyHouse in your browser at localhost://3000 ( unless you opened it on another port )
 
-#### Thats it 🥳 🥳 !! -->
+#### Thats it 🥳 🥳 !! 
 
 <!-- Celebration gif -->
 <br/>
