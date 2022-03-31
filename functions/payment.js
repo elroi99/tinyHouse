@@ -1,3 +1,5 @@
+// we arent using this folder ( function ) at all. it contins the stripe backend code , implemented using netlify serverless function. ( which we arent using. )
+// in short, we arent using this file, folder currently.
 
 const stripe = require("stripe")(process.env.STRIPE_SECRET_TEST)
 
