@@ -118,7 +118,7 @@ const Listings = () => {
     <Navbar/> 
     <Container  maxWidth="xl" sx={{ mx:"clamp(8px , auto , auto )" }}> 
         <Box sx={{ mt: 10 }}>
-            <Typography variant="h3" color="primary.dark" fontWeight="500" sx={{ mt : 5 , mb : 3}}> Results for "Toronto , Ontario, Canada"</Typography>
+            {/* <Typography variant="h3" color="primary.dark" fontWeight="500" sx={{ mt : 5 , mb : 3}}> Results for "Toronto , Ontario, Canada"</Typography> */}
             
             {/* filter and pagination components */}
             <Box sx={{ 
