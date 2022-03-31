@@ -3,14 +3,12 @@ A vacation rental listing website
 # Live site
 Visit the live site at [Tiny House](https://tiny-house-clone.herokuapp.com/)
 
-
-<br/>
 #### Note that this project is a clone of [TinyHouse](https://www.tinyhouse.app/). Visit them and give them some love 
 
 
 # Description
 Tiny House is a typical Vacation Rental Site. Think AirBNB. I starting building this site in order to test my UI skills and in order to cement the lessons that I learnt while building my previous portfolio project [Atlas-Clone](https://github.com/elroi99/atlas-clone)
-Tiny House has been built using **HTML** , **CSS** , **React Js** FrontEnd framework , **MUI ( Material UI )** component library on the front end and The **Firebase** backend as a service on the back end. Deployment was handled using **Heroku**
+Tiny House has been built using **HTML** , **CSS** , **React Js** , **MUI ( Material UI )** , **Firebase**. Deployment was handled using **Heroku**
 When I started building TinyHouse, I was familiar with most of the above technologies, as a result, there was less of a learning curve and I could concentrate on writing cleaner code. 
 
 While building TinyHouse, my main objective was to test my UI skills, and thus, I have attempted to create as close a copy to the original app as possible. Please do compare my project [Tiny House](https://tiny-house-clone.herokuapp.com/) with the original website [TinyHouse](https://www.tinyhouse.app/)
@@ -50,11 +48,15 @@ The process for installing and running tinyHouse on the local machine is more co
 it involves forking the project to your own repo , connecting netlify cli to that repo  , and then starting the development server ( react + netlify fn's) 
 using netlify cli instead of npm start. -- I am not sure of the complete instruction set.
 
+# Check out my other project
+[Atlas](https://github.com/elroi99/atlas-clone)
+
 # Running the code on your local machine
 
 ## Dependencies
 - Node.JS -- Make sure you have Node.js installed on your machine. 
 - NPM ( Node Package Manager ) -- We will be using Node.js and NPM to run the project.
+- Although not a npm package, We will need create a firebase project.  
 
 
 ## Installation Instructions
