@@ -32,7 +32,7 @@ const Card = ( { cardDetails  } ) => {
     
     return (
     <>
-        <Box sx={{boxShadow: "rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px"}}> 
+        <Box sx={{boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px"}}> 
         <Link 
         href= { `/listing/${propertyUid}` } 
         sx={{ textDecoration : "none" , color : "initial" }}
@@ -47,15 +47,15 @@ const Card = ( { cardDetails  } ) => {
             </Box>
             <Box sx={{ p : 3 }}>
                 <Typography variant="body1" noWrap="true" gutterBottom  sx={{ color : "#1D226C" , display : "inlineBlock"  }}> { `$${pricesPerDay}`} <Typography component={"span"} display="inline" sx={{ color : "#D1D1D1"}}>/day</Typography> </Typography>
-                <Typography noWrap="true" textDecoratoin="none" sx={{ textDecoration : "none" }} > { title } </Typography>
-                <Typography gutterBottom noWrap={ true } sx={{ mb:1 , color : "grey.medium" }}> { address } </Typography>
+                <Typography textDecoratoin="none" sx={{ textDecoration : "none" , fontWeight : 300 , color : "grey.dark" }} > { title } </Typography>
+                <Typography gutterBottom sx={{ mb:1 , color : "grey.medium" }}> { address } </Typography>
                 <Box display="flex"> 
                     <Box > 
                         <HomeOutlinedIcon fontSize="1.4rem" sx={{ color:"primary.main" }}  />
                     </Box>
                     <Box ml="auto" minWidth="maxContent"> 
                         <PersonOutlineOutlinedIcon fontSize="1.4rem" sx={{ color:"primary.main" }} />
-                        <Typography variant="body2" display="inline" position="relative" bottom="3px" color="grey.light "> {  `${maxGuests} guests` }</Typography>
+                        <Typography variant="body2" display="inline" position="relative" bottom="3px" color="grey.light"> {  `${maxGuests} guests` }</Typography>
                     </Box>
                 </Box> 
             </Box> 

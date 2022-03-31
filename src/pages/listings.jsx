@@ -21,6 +21,9 @@ import { useParams } from "react-router-dom";
 import Card from "../components/card";
 import { getDocs , collection , query , where } from "firebase/firestore";
 import { db } from "../firebase/firebase";
+import githubLogo from "../assets/images/githubLogo.png"
+import linkedinLogo from "../assets/images/linkedinLogo.png"
+import twitterLogo from "../assets/images/twitterLogo.png"
 
 const Listings = () => {
     const [ listingsData , setListingsData ] = useState([])  // initially blank array. will contain all the listings once we pull it from firebase
@@ -161,7 +164,7 @@ const Listings = () => {
             </Box> 
 
             {/* Listings */}
-            <Box sx={{ display : "grid" , gridTemplateColumns : { xs : "1fr" , sm : "1fr 1fr" , md : "1fr 1fr 1fr 1fr" , } , gridRowGap : 13 , gridColumnGap : 10, mb : 10 }} > 
+            <Box sx={{ display : "grid" , gridTemplateColumns : { xs : "1fr" , sm : "1fr 1fr" , md : "1fr 1fr 1fr 1fr" , } , gridRowGap : 13 , gridColumnGap : 10,  }} > 
                 {
                     // we will render the cards if listingsData is not empty
                     ( listingsData.length > 1 )  
@@ -173,6 +176,27 @@ const Listings = () => {
                         return <Card cardDetails = { cardDetails } />
                     })  
                 }
+            </Box>
+
+
+            {/* footer with socials + links */}
+            <Box sx={{ display : "flex" , flexDirection : "rowReverse" , alignItems : "center" , height : "75px" , mt : "1rem"  }}>
+                {/* <Typography variant="h3" sx={{ ml : "auto" , mr : "2rem"}}> Made with <span> ❤️ </span> by Elroi Noronha</Typography>  */}
+                <Box>
+                    <Link href="https://github.com/elroi99"> 
+                        <img style={{ width : "35px" , height : "auto" , marginLeft : "1rem" }} alt="github logo" src={ githubLogo } />  
+                    </Link>
+                </Box>
+                <Box>
+                    <Link href="https://www.linkedin.com/in/elroinoronha/"> 
+                        <img style={{ width : "35px" , height : "auto" , marginLeft : "1rem" }} alt="linkedin logo" src={ linkedinLogo } />  
+                    </Link>
+                </Box>
+                <Box> 
+                <Link href="https://twitter.com/ElroiNoronha"> 
+                        <img style={{ width : "35px" , height : "auto" , marginLeft : "1rem" }} alt="twitter logo" src={ twitterLogo } />  
+                </Link>
+                </Box>
             </Box>
             
         

@@ -32,7 +32,10 @@ const CARD_OPTIONS = {
 }
 
 const CheckoutComponent = () => {
-    let { userUid } = useContext(authContext);
+    let user = useContext(authContext);
+    console.log(user);
+    
+    let userUid = user.userUid; 
 
     // triggerErrorAlert will let us display a 
     const [ success , setSuccess ]= useState(false);
@@ -77,7 +80,7 @@ const CheckoutComponent = () => {
                     // complete the payment ( Stripe part)
                     const { id } = paymentMethod;
                     // in case you use traditional node + hosting
-                    const response =  await axios.post("http://localhost:4000/payment" , {
+                    const response =  await axios.post("http://localhost:4500/payment" , {
                         amount : 1000,  // cause stripe takes input in cents. ie. this will be 10 dollars.
                         id
                     })
@@ -86,12 +89,17 @@ const CheckoutComponent = () => {
                         console.log("Successful payment");
                         setSuccess(true);
                     }
+                    else{
+                        console.log("Stipe failure !!")
+                        console.log(error);
+                        triggerSnackbar({displayMessage : "Booking Failed -- Stripe error!!" , severity : "error " })
+                    }
 
                     // the firebase part
                     await createBooking();    // updates firebase 
                     console.log("booking created yo!!");
                     // the booking is a success : display the snackbar with a success message
-                    triggerSnackbar({displayMessage : "Booking Successful !!" , severity : "error" })
+                    triggerSnackbar({displayMessage : "Booking Successful !!" , severity : "success" })
                     closeModal(true);
 
 
@@ -135,3 +143,8 @@ const CheckoutComponent = () => {
 }
  
 export default CheckoutComponent;
+
+
+
+
+

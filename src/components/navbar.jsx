@@ -10,6 +10,7 @@ import {
     Avatar, 
     Fade , 
     Link,
+    Popover,
 
 } from "@mui/material";
 import { useContext , useState , useEffect  } from "react"
@@ -22,6 +23,8 @@ import { signInWithFirebase , signout } from "../firebase/firebaseAuth";
 import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+// images ( from assets )
+import tinyHouseLogo from "../assets/images/tinyHouseLogo.png"
 
 
 const Navbar = () => {
@@ -30,150 +33,112 @@ const Navbar = () => {
     console.log(userData);
     let history = useHistory();
 
+    // --- for the popover
+    const [anchorEl, setAnchorEl] = useState(null);
+
+    const handleClick = (event) => {
+      setAnchorEl(event.currentTarget);
+    };
+  
+    const handleClose = () => {
+      setAnchorEl(null);
+    };
+  
+    const open = Boolean(anchorEl);
+    const id = open ? 'simple-popover' : undefined;
+    // --- for the popover
+
     return ( 
         <> 
         <AppBar sx={{ backgroundColor : "white" }} > 
             <Toolbar>
 
-                {/* search bar */}
-                <Box display="flex" flexDirectin="row" >
-                    <Box sx={{ mt : 1}} >
-                        <TextField 
-                        variant="outlined" 
-                        size="small" 
-                        placeholder="Search 'San francisco' " 
-                        sx={{ 
-                            borderTopRightRaduis : 0,
-                            borderBottonRightRadius : 0,
-                            borderBottomLeftRadius : 1,
-                            borderTopLeftRadius : 1,
-                            border : 0,
-                        }} 
-                        
-                        />
-                        <Button 
-                        size="small" 
-                        sx={{ 
-                            backgroundColor : "primary.light"  , 
-                            height : "100%",
-                            borderTopRightRaduis : 1,
-                            borderBottonRightRadius : 1,
-                            borderBottomLeftRadius : 0,
-                            borderTopLeftRadius : 0,
-                            "&:hover , &:focus , &:active" : {
-                                backgroundColor : "lightgreen",
-                            }
-                            }} >
-                                {/* <SearchOutlinedIcon color="#FFFFFF"/> */}
-                        </Button>
+            {/* LHS part ( the tinyhouse logo) */}
+            <Link 
+                    href= { `/` } 
+                    sx={{ textDecoration : "none" , color : "initial" }}
+                    onClick={ (e) => { 
+                        // we only have to handle the left click ( cause we dont want LHS click to )
+                        e.preventDefault(); // stop the clicks default behavior
+                        history.push(`/`)
+                        }}
+                    > 
+
+                    <Box sx={{ marginTop : "auto" , marginBottom : "auto" , position : "relative" , top : "5px"}}>
+                        <img style={{ width : "35px" , height : "auto" ,  }} alt="tiny house logo" src={ tinyHouseLogo } />                
                     </Box>
 
-                {/* <Box>
-
-                    <Button 
-                    size="small" 
-                    sx={{ 
-                        backgroundColor : "primary.light"  , 
-                        height : "100%",
-                        borderTopRightRaduis : 1,
-                        borderBottonRightRadius : 1,
-                        borderBottomLeftRadius : 0,
-                        borderTopLeftRadius : 0,
-                        "&:hover , &:focus , &:active" : {
-                            backgroundColor : "lightgreen",
-                        }
-                        }} >
-                            
-                    </Button>
-
-                </Box> */}
-           </Box>
-
-           
+            </Link>
 
             {/* RHS part of the navbar */}
-            <Box sx={{ ml : "auto" , }}> 
+            <Box sx={{ ml : "auto" , display : "flex" , flexDirection : "row" }}> 
             
                 {/* hostForm icon ( hostForm page) */}
-                <Box display="inline-block" sx={{ mr : 2 , width : "auto" , height : "100%"  }} onClick={ () => { history.push("/hostForm") } } >
+                <Box component="span" sx={{ display : "inline" , mr : 2 , width : "auto" , height : "100%" ,  my : "auto"  }} onClick={ () => { history.push("/hostForm") } } >
                         <HomeOutlinedIcon sx={{  fontSize : "1.2rem" , position : "relative" , top : "4px" , fontWeight : 500 , color : "grey.dark"  }} />
                         <Typography variant="button" sx={{ fontSize : "1rem" , color : "grey.dark" , fontWeight : "300" , pl : 0 ,  }}> Host </Typography>                             
                 </Box>
-
-
-                {/* signin or signout at any point of time */}
+                
                 {
                     (userData != null) 
                     ?
-                        // if user is signed in, show the avatar. It will give the user the profile and Log out options.
-                        <LoggedInOptions/>
-                        :
-                        // if user is signed out
-                        <Button variant="outlined" onClick={ signInWithFirebase } > sign in  </Button>
-                }
-            </Box>
+                    // if user is signed in, show the avatar. It will give the user the profile and Log out options.
+                    <Box sx={{ display : "relative"}}>
+                        <Avatar 
+                            onClick={ handleClick }
+                            aria-describedby={id}
+                            sx={{ backgroundColor:"#FF5722" }} 
+                            > 
+                            
+                            { userData.displayName.charAt(0).toUpperCase() } 
+                            
+                        </Avatar>
 
-            {/* <LoggedInOptions/> */}
+                        <Popover
+                        id={id}
+                        open={open}
+                        anchorEl={anchorEl}
+                        onClose={handleClose}
+                        anchorOrigin={{
+                            vertical: 'bottom',
+                            horizontal: 'left',
+                        }}
+                        >
+                            <Paper sx={{ display : "absolute" , top : "200px"}} > 
+                                <Stack sx={{ px : 2 , }}> 
+                                        <Box onClick={ () => { history.push("/userProfile") } }>
+                                            <PersonOutlinedIcon sx={{ fontSize : "body1" , fontSize : "1rem" , position : "relative" , top : "3px" , mr : 1 }} />
+                                            <Button variant="button" sx={{ fontSize : "1rem" , color : "grey.medium" }}> Profile </Button>                             
+                                        </Box>
+                                        <Box onClick ={ signout }>
+                                            <LogoutOutlinedIcon sx={{ fontSize : "body1" , fontSize : "1rem" , position : "relative" , top : "3px" , mr : 1 }} />
+                                            <Button variant="text" sx={{ fontSize : "1rem" , color : "grey.medium" }}> Log out </Button>                             
+                                        </Box>
+                                </Stack>
+                            </Paper>
+                        </Popover>
+
+
+                    </Box>
+
+                    :
+                    // if user is signed out
+                    <Button variant="outlined" onClick={ signInWithFirebase } > sign in  </Button>
+
+                }
+
+
+            </Box>
 
             </Toolbar>
         </AppBar>
         {/* Appbar is just a paper. it does not have a minHeight.... toolbar does ( from theme.mixins.toolbar.minHeight) */}
-        <Toolbar/>
         </>
      );
 }
  
 export default Navbar;
 
-
-
-const LoggedInOptions = () => {
-    // contexts
-    let userData = useContext( authContext );
-    let history = useHistory();
-
-    let [ checked , setChecked] = useState(false)
-    useEffect( () => {
-        console.log(checked);
-    } , [ checked])
-
-    return (
-        <> 
-        <Box 
-        sx={{ backgroundColor : "black" , display : "relative"}}>
-            
-            <Avatar 
-                onClick= { () => { setChecked(!checked)}}
-                sx={{ backgroundColor : "warning"}}> 
-                {/* { userData.displayName.charAt(0).toUpperCase() }  */}
-            </Avatar>
-
-            <Fade in={ checked } >
-                <Paper sx={{ display : "absolute" , top : "200px"}} > 
-                        <Stack sx={{ px : 2 , }}> 
-                                <Box onClick={ () => { history.push("/userProfile") } }>
-                                    <PersonOutlinedIcon sx={{ fontSize : "body1" , fontSize : "1rem" , position : "relative" , top : "3px" , mr : 1 }} />
-                                    <Button variant="button" sx={{ fontSize : "1rem" , color : "grey.medium" }}> Profile </Button>                             
-                                </Box>
-                                <Box onClick ={ signout }>
-                                    <LogoutOutlinedIcon sx={{ fontSize : "body1" , fontSize : "1rem" , position : "relative" , top : "3px" , mr : 1 }} />
-                                    <Button variant="text" sx={{ fontSize : "1rem" , color : "grey.medium" }}> Log out </Button>                             
-                                </Box>
-                        </Stack>
-                </Paper>
-            </Fade> 
-
-        </Box>
-
-
-
-
-
-
-
-        </>
-      );
-}
  
 
 

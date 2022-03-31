@@ -247,7 +247,12 @@ const HostForm = () => {
                 let propertyListingObj = new Property( propertyUid , userData.userUid , subObject  );
                 console.log(propertyListingObj);
                 // set the property into the listings collection
-                await setDoc( doc( db , `listings/${propertyUid}`).withConverter(propertyConverter) , propertyListingObj );
+                await setDoc( doc( db , `userGeneratedListings/${propertyUid}`).withConverter(propertyConverter) , propertyListingObj );
+
+                // we are uploading user-generated listings into a dedicated collection called "userGeneratedListings" because we want these listings to be separated from the dummy data listings
+                // the reson being that, currently, our listings page code is not set up to differentiate user generated listings from dummy lisintgs ( it is pretty simple actually. just filter out the listings created by the logged in user )
+                // we only want dummy listings to be displayed on the listings page
+                // and we want the user-generated listings to only be displayed on the userProfile page 
 
                 // if control has reached here, it means that the upload was successful, stop the spinner
                 setSpinnerVisibility(false);
@@ -283,7 +288,7 @@ const HostForm = () => {
         // when user not signed in or stipe not connected
         // you have to sign in and connect to stripe to host a listing
         <Box sx={{ pt : "40vh" }}> 
-            <Typography variant="h3" gutterBottom sx={{ fontWeight : 500 , color : "primary.dark"}} > You'll have to be signed in and connected with Stripe to host a listing! </Typography>
+            <Typography variant="h3" gutterBottom sx={{ fontWeight : 500 , color : "primary.dark"}} > You'll have to be signed in to host a listing! </Typography>
             <Typography variant="body1" color="grey.dark"> We only allows users who've signed in to our application to host new listings. Sign in to create a new Listing.</Typography>
 
             <Button variant="contained" onClick={ signInWithFirebase } size="small" sx={{ ml : "auto"  }}> Sign In </Button>
@@ -378,7 +383,7 @@ const HostForm = () => {
     sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
     open={ spinnerVisibility }
     >
-    <CircularProgress color="inherit" />
+        <CircularProgress color="inherit" />
     </Backdrop>
 
     </Container>  

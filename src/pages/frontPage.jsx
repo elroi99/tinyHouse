@@ -18,16 +18,19 @@ import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import SearchBar from "../components/searchBar";
-import dubai from "../assets/images/dubai.jpg";
-import toronto from "../assets/images/toronto.jpg";
-import londonAspectChanged from "../assets/images/londonAspectChanged.jpg";
-import losAngeles from "../assets/images/losAngeles.jpg";
+import dubaiDimensionsReduced from "../assets/images/dubaiDimensionsReduced.jpg";
+import torontoDimensionsReduced from "../assets/images/torontoDimensionsReduced.jpg";
+import londonAspectChangedDimensionsReduced from "../assets/images/londonAspectChangedDimensionsReduced.jpg";
+import losAngelesDimensionsReduced from "../assets/images/losAngelesDimensionsReduced.jpg";
 import beachHouse from "../assets/images/beachHouse.jpg";
 import houseWithPool from "../assets/images/houseWithPool.jpg";
 import diningRoom from "../assets/images/diningRoom.jpg";
 import brownCottage from "../assets/images/brownCottage.jpg";
-import cancunPosterAspectChanged from "../assets/images/cancunPosterAspectChanged.jpg";
+import cancunPosterAspectChangedDimensionsReduced from "../assets/images/cancunPosterAspectChangedDimensionsReduced.jpg";
 import goldenGatePoster from "../assets/images/goldenGatePoster.jpg";
+import githubLogo from "../assets/images/githubLogo.png"
+import linkedinLogo from "../assets/images/linkedinLogo.png"
+import twitterLogo from "../assets/images/twitterLogo.png"
 import { a } from "../firebase/firestore";  // triggering the script only !!
 import { getDocs , collection , query , startAt , orderBy,  endAt } from "firebase/firestore";
 import { db } from "../firebase/firebase";
@@ -66,27 +69,27 @@ const FrontPage = () => {
         {
             name : "Toronto",
             cityUid : 1,    // change these
-            imgURL : toronto,
+            imgURL : torontoDimensionsReduced,
             cityName : "toronto", // camel cased for use in url params
         },
         {
             name : "Dubai",
             cityUid : 2,  // change these
-            imgURL : dubai,
+            imgURL : dubaiDimensionsReduced,
             cityName : "dubai", // camel cased for use in url params
 
         },
         {
             name : "Los Angeles",
             cityUid : 3,  // change these
-            imgURL : losAngeles,
+            imgURL : losAngelesDimensionsReduced,
             cityName : "losAngeles", // camel cased for use in url params
 
         },
         {
             name : "London",
             cityUid : 4,  // change these
-            imgURL : londonAspectChanged,
+            imgURL : londonAspectChangedDimensionsReduced,
             cityName : "london", // camel cased for use in url params
 
         },
@@ -104,7 +107,7 @@ const FrontPage = () => {
         {
             text : "Or a two-week trip to visit Cancun, Mexico?",
             cityUid : 4,  // change these
-            imgURL : cancunPosterAspectChanged,
+            imgURL : cancunPosterAspectChangedDimensionsReduced,
             cityName : "cancun", // camel cased for use in url params
 
         },
@@ -120,7 +123,7 @@ const FrontPage = () => {
     <Navbar/> 
     <Container  maxWidth="xl" sx={{ mx:"clamp(8px , auto , auto )" }}> 
         <Box sx={{ minHeight : "200vh" , mt: 10 }}>
-            <Box >
+            <Box sx={{ mt : 15 }}>
                 <Typography 
                 gutterBottom 
                 variant="h1" 
@@ -128,7 +131,6 @@ const FrontPage = () => {
                 fontWeight="500" >
                     Find a place you'll love to stay
                 </Typography>
-                <SearchBar/>
             </Box> 
 
             <Box 
@@ -195,11 +197,19 @@ const FrontPage = () => {
                     > 
                         Your guide for all things rental
                     </Typography >
-                    <Typography variant="body1" sx={{ mb : 4 , width : "auto" , textAlign : "center"}}> Helping you make the best decisions in buying, selling, & renting your last minute locations. </Typography>
+                    <Typography variant="body1" sx={{ mb : 4 , width : "auto" , textAlign : "center" , fontWeight : 300 }}> Helping you make the best decisions in buying, selling, & renting your last minute locations. </Typography>
                     <Button 
-                    sx={{ display: "block" , backgroundColor : "primary.light" ,  color : "white" , fontWeight : "300" , mx : "auto" }}
+                    sx={{ 
+                        display: "block" , 
+                        backgroundColor : "primary.light" ,  
+                        color : "white" , 
+                        fontWeight : "300" , 
+                        mx : "auto" , 
+                        ":hover" : { backgroundColor : "#61b3ff"} }}
                     onClick={ () => history.push("/listings/unitedStates")}
-                    > Popular listings in the United States </Button>
+                    > 
+                        Popular listings in the United States 
+                    </Button>
                 
             </Box> 
             
@@ -273,48 +283,36 @@ const FrontPage = () => {
                 <Typography variant="h2" fontWeight="500" color="primary.dark" textAlign="center" sx={{ mb : 5 }} > 
                     This app was cloned from <Link href="https://www.tinyhouse.app/" sx={{ fontStyle : "italic"  }}> Tiny House </Link> 
                 </Typography>
-                <Box display="flex" justifyContent="center" > 
+                {/* <Box display="flex" justifyContent="center" > 
                     <Button variant="outlined" display="inline" width="auto" 
                         onClick={ () => { window.open("https://www.tinyhouse.app/", "_blank")} } >
                         visit the original app 
                     </Button>
-                </Box>
+                </Box> */}
             </Box>
 
-
-
-            {/* <Box 
-            sx={{
-                
-                 }}> 
-                <Typography sx ={{ color : "white" , background : "#C04848" , }}> Dubai !! </Typography>
-            </Box>  */}
-
-            {/* <a href="https://css-tricks.com/snippets/jquery/make-entire-div-clickable/" > 
-                </Box>
-                        <img sx={{ }} /> 
-                        <Box sx={{ p : 3 , backgroundColor : "pink" , height : "200px"}}>    
-                </Box> 
-            </Link> */}
-            
-            {/* <Box> 
-                <a href="#" onClick={ (e) => { e.preventDefault() }} > 
-                    <Box sx={{ height : "100px" , width : "100px" , backgroundColor : "red"}}> </Box> 
-                </a> 
-            </Box> */}
-
-            {/* <a 
-            href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a" 
-            onClick={ (e) => { 
-                console.log("see the e event "); 
-                console.log(e); 
-                 }} 
-            > 
-            Check the event obj of a tag 
-            </a> */}
-
-
         </Box>
+
+        {/* footer with socials + links */}
+        <Box sx={{ display : "flex" , alignItems : "center" , height : "75px" , mt : "5rem" , borderTop : "4px solid #1D226C" }}>
+            <Typography variant="h3" sx={{ ml : "auto" , mr : "2rem"}}> Made with <span> ❤️ </span> by Elroi Noronha</Typography> 
+            <Box>
+                <Link href="https://github.com/elroi99"> 
+                    <img style={{ width : "35px" , height : "auto" , marginLeft : "1rem" }} alt="github logo" src={ githubLogo } />  
+                </Link>
+            </Box>
+            <Box>
+                <Link href="https://www.linkedin.com/in/elroinoronha/"> 
+                    <img style={{ width : "35px" , height : "auto" , marginLeft : "1rem" }} alt="linkedin logo" src={ linkedinLogo } />  
+                </Link>
+            </Box>
+            <Box> 
+              <Link href="https://twitter.com/ElroiNoronha"> 
+                      <img style={{ width : "35px" , height : "auto" , marginLeft : "1rem" }} alt="twitter logo" src={ twitterLogo } />  
+              </Link>
+            </Box>
+        </Box>
+
     </Container>
     </>  );
 }

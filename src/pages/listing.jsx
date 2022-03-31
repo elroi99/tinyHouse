@@ -1,4 +1,5 @@
 import { useState , useEffect , useContext , createContext  } from "react";
+import { useHistory } from "react-router-dom";
 import { v4 as uuidv4 } from 'uuid';
 // mui components
 import { 
@@ -50,6 +51,9 @@ import { randomNames } from "../assets/staticData/propertyDescriptions";
 import StripeContainer from "../components/StripeContainer";
 import CustomizedSnackbar from "../components/customizedSnackbar";
 import ListingSnackbar from "../components/listingSnackbar";
+import githubLogo from "../assets/images/githubLogo.png"
+import linkedinLogo from "../assets/images/linkedinLogo.png"
+import twitterLogo from "../assets/images/twitterLogo.png"
 
 export const listingContext = createContext();
 
@@ -64,8 +68,17 @@ const Listing = () => {
     let [ modalVisibility , setModalVisibility ] = useState(false); 
     let [ snackbarContent , triggerSnackbar ] = useState({ displayMessage  : null , severity : null });   // contains the contents that will be displayed in a error snackbar. ( triggered when there is a stripe error or a firebase error etc etc )
 
+    let user = useContext(authContext); // if value of user is null, it means that the user is logged out. 
+    
 
-    let openModal = () => { setModalVisibility(true) };
+    let history = useHistory();
+
+    let openModal = () => { 
+        // open the modal regardless of whether the user is logged in or not. 
+        // the message displayed inside the modal will change depending on the users log in status. 
+            setModalVisibility(true) ;
+    }
+
     let closeModal = () => { setModalVisibility(false) };
 
     let { propertyUid } = useParams();
@@ -91,19 +104,6 @@ const Listing = () => {
         setHostUid(hostUid);
     } , [])
 
-
-
-    // function createBooking(){
-    //     // will get the checkindate and checkoutdate from the state
-    //     let checkindate = dateState.checkInDate;
-    //     let checkoutdate = dateState.checkOutDate;
-
-    //     let bookingUid = uuidv4();
-    //     let bookingObj = new Booking( bookingUid , propertyUid , checkindate.toISOString() , checkoutdate.toISOString() );
-        
-    //     // add the booking id to bookingsArr of the user who booked it
-
-    // }
 
     let stayDurationInDays = ( checkindate , checkoutdate ) => {
         // expects js date objects
@@ -207,12 +207,12 @@ const Listing = () => {
                             backgroundColor : "pink.light" , 
                             display : "inline",
                             px : 0.6 , py : 0.1 ,  border : "1px" , borderColor : "pink.dark" , borderStyle : "solid"  }} elevation="0"> 
-                            <Typography component="span" color="pink.dark"> { (propertyDetails && propertyDetails.maxGuests) ? `${propertyDetails.maxGuests} guests` : "" } </Typography> 
+                            <Typography component="span" color="pink.dark"> { (propertyDetails) ? `${propertyDetails.maxGuests} guests` : "" } </Typography> 
                         </Box>
 
                     </Stack>
 
-                    <Typography variant="body2" color="grey.medium" sx={{ mb : 10}} > { propertyDetails && propertyDetails.listingsDescription } </Typography>
+                    <Typography variant="body2" color="grey.medium" > { propertyDetails && propertyDetails.listingsDescription } </Typography>
 
                 </Box> 
                 
@@ -252,6 +252,9 @@ const Listing = () => {
 
         </Box>
         
+
+        {/* NOTE -- the stripe integration does not work yet. -- CORS + network probem. I am temporarily not using the Stripe feature ( Ie. Request Booking will directly display the subtotal modal but it wont contain the stripeContainer component) */}
+        
         {/* the subtotal modal ( one that will be opened when the user "Requests to book") */}
         <Modal open={modalVisibility} onClose={ closeModal } sx={{ width : "auto" , display: "flex" , alignItems : "center" , justifyContent : "center" }}>
             
@@ -274,6 +277,26 @@ const Listing = () => {
 
         {/* <CustomizedSnackbar snackbarContent={ snackbarContent } triggerSnackbar={ triggerSnackbar}  />  */}
         <ListingSnackbar snackbarContent={ snackbarContent } triggerSnackbar={ triggerSnackbar} />
+
+            {/* footer with socials + links */}
+            <Box sx={{ display : "flex" , flexDirection : "rowReverse" , alignItems : "center" , height : "75px" , mt : "1rem"  }}>
+                {/* <Typography variant="h3" sx={{ ml : "auto" , mr : "2rem"}}> Made with <span> ❤️ </span> by Elroi Noronha</Typography>  */}
+                <Box>
+                    <Link href="https://github.com/elroi99"> 
+                        <img style={{ width : "35px" , height : "auto" , marginLeft : "1rem" }} alt="github logo" src={ githubLogo } />  
+                    </Link>
+                </Box>
+                <Box>
+                    <Link href="https://www.linkedin.com/in/elroinoronha/"> 
+                        <img style={{ width : "35px" , height : "auto" , marginLeft : "1rem" }} alt="linkedin logo" src={ linkedinLogo } />  
+                    </Link>
+                </Box>
+                <Box> 
+                <Link href="https://twitter.com/ElroiNoronha"> 
+                        <img style={{ width : "35px" , height : "auto" , marginLeft : "1rem" }} alt="twitter logo" src={ twitterLogo } />  
+                </Link>
+                </Box>
+            </Box>
 
     </Container>
     </>  
