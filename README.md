@@ -1,7 +1,6 @@
 # Tiny House
 A vacation rental listing website 
-# Live site
-Visit the live site at [Tiny House](https://tiny-house-clone.herokuapp.com/)
+# View Live site --> [Tiny House](https://tiny-house-clone.herokuapp.com/)
 
 #### Note that this project is a clone of [TinyHouse](https://www.tinyhouse.app/). Visit them and give them some love 
 
