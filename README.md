@@ -60,7 +60,7 @@ While building TinyHouse, my main objective was to test my UI skills, and thus, 
 1. Get a copy of the project on your local machine by running the following command
 	 `git clone https://github.com/elroi99/tinyHouse.git`
 2. Enter the project directory 
-	 `cd tinyHouse`
+	 `cd tiny-house`
 3. install dependencies using npm
 	 `npm install`
 4. create your own firebase project to get your own firebase keys 
