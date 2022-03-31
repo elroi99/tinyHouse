@@ -1,17 +1,19 @@
 # Tiny House
 A vacation rental listing website 
+# Live site
+Visit the live site at [Tiny House](https://tiny-house-clone.herokuapp.com/)
+
+
 <br/>
 #### Note that this project is a clone of [TinyHouse](https://www.tinyhouse.app/). Visit them and give them some love 
 
-# Live site
-Visit the live site at [TODO](#)
 
 # Description
 Tiny House is a typical Vacation Rental Site. Think AirBNB. I starting building this site in order to test my UI skills and in order to cement the lessons that I learnt while building my previous portfolio project [Atlas-Clone](https://github.com/elroi99/atlas-clone)
-Tiny House has been built using HTML , CSS , React Js FrontEnd framework , MUI ( Material UI ) component library on the front end and The Firebase backend as a service on the back end. Stripe was used to power the payments.
+Tiny House has been built using **HTML** , **CSS** , **React Js** FrontEnd framework , **MUI ( Material UI )** component library on the front end and The **Firebase** backend as a service on the back end. Deployment was handled using **Heroku**
 When I started building TinyHouse, I was familiar with most of the above technologies, as a result, there was less of a learning curve and I could concentrate on writing cleaner code. 
 
-While building TinyHouse, my main objective was to test my UI skills, and thus, I have attempted to create as close a copy to the original app as possible. For the most part, I have succeeded at this task.
+While building TinyHouse, my main objective was to test my UI skills, and thus, I have attempted to create as close a copy to the original app as possible. Please do compare my project [Tiny House](https://tiny-house-clone.herokuapp.com/) with the original website [TinyHouse](https://www.tinyhouse.app/)
 
 # Technical Overview
 
@@ -37,7 +39,7 @@ While building TinyHouse, my main objective was to test my UI skills, and thus, 
 - React Router
 - Firebase
 - Git 
-- Netlify
+- Heroku
 - VSCode 
 - Terminal
 
@@ -53,23 +55,31 @@ using netlify cli instead of npm start. -- I am not sure of the complete instruc
 ## Dependencies
 - Node.JS -- Make sure you have Node.js installed on your machine. 
 - NPM ( Node Package Manager ) -- We will be using Node.js and NPM to run the project.
-- Netlify CLI ( Needed to run the Netlify Serverless Functions locally ) 
+
 
 ## Installation Instructions
-### Part 1 ( Install Netlify CLI globally using NPM )
-1. Install Netlify CLI globally on your local machine
-	`npm install netlify-cli -g`
 
-
-
-### Part 2 ( Install and run TinyHouse )
 1. Get a copy of the project on your local machine by running the following command
 	 `git clone https://github.com/elroi99/tinyHouse.git`
- 2. Enter the project directory 
+2. Enter the project directory 
 	 `cd tinyHouse`
- 3. install dependencies using npm
+3. install dependencies using npm
 	 `npm install`
- 4. Run the project 
+4. create your own firebase project to get your own firebase keys 
+5. replace the current firebaseConfig object with the object from your new firebase project.
+	the firebaseConfig obj looks similar to below object and is inside the firebase.js file at src/firebase/
+	```
+	const firebaseConfig = {
+	  apiKey: "AIzaSyee-dd-xxxxxxx,
+	  authDomain: "tiny-house-xxxxx.firebaseapp.com",
+	  projectId: "tiny-house-7xxxx",
+	  storageBucket: "tiny-house-3333s.appspot.com",
+	  messagingSenderId: "434xxx44yyy,
+	  appId: "1:4d4232fdd37o7986"
+	};
+	```
+6. once you have added your own firebaseConfig object, the app is ready to Rock and Roll !!
+7. Run the project 
 	 `npm start`
 	 
 Give it some time ...... Breathe in .. Breathe out.  
