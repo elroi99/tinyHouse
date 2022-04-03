@@ -51,7 +51,7 @@ While building TinyHouse, my main objective was to test my UI skills, and thus, 
 ## Dependencies
 - Node.JS -- Make sure you have Node.js installed on your machine. 
 - NPM ( Node Package Manager ) -- We will be using Node.js and NPM to run the project.
-- Although not a npm package, We will need create a firebase project.  
+<!-- - Although not a npm package, We will need create a firebase project.   -->
 
 
 ## Installation Instructions
@@ -62,7 +62,7 @@ While building TinyHouse, my main objective was to test my UI skills, and thus, 
 	 `cd tiny-house`
 3. install dependencies using npm
 	 `npm install`
-4. create your own firebase project to get your own firebase keys 
+<!-- 4. create your own firebase project to get your own firebase keys 
 5. replace the current firebaseConfig object with the object from your new firebase project.
 	the firebaseConfig obj looks similar to below object and is inside the firebase.js file at src/firebase/
 	```
@@ -75,8 +75,9 @@ While building TinyHouse, my main objective was to test my UI skills, and thus, 
 	  appId: "1:4d4232fdd37o7986"
 	};
 	```
-6. once you have added your own firebaseConfig object, the app is ready to Rock and Roll !!
-7. Run the project 
+6. once you have added your own firebaseConfig object, the app is ready to Rock and Roll !! -->
+4. The code is now ready to Rock and Roll !!
+5. Run the project 
 	 `npm start`
 	 
 Give it some time ...... Breathe in .. Breathe out.  
