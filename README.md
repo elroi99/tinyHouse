@@ -12,6 +12,37 @@ When I started building TinyHouse, I was familiar with most of the above technol
 
 While building TinyHouse, my main objective was to test my UI skills, and thus, I have attempted to create as close a copy to the original app as possible. Please do compare my project [Tiny House](https://tiny-house-clone.herokuapp.com/) with the original website [TinyHouse](https://www.tinyhouse.app/)
 
+# Visuals
+
+<!-- landing page image -->
+#
+<br/>
+ <img src="https://github.com/elroi99/tinyHouse/blob/main/landing%20page.png" wiidth="600px" style="border:1px solid black" />
+ 
+ #
+<!--  listing page -->
+ <br/>
+ <img src="https://github.com/elroi99/tinyHouse/blob/main/listings%20page.png" wiidth="600px" />
+ 
+ #
+ <!--  listings page image -->
+ <br/>
+ <img src="https://github.com/elroi99/tinyHouse/blob/main/listing%20page.png" wiidth="600px" />
+
+<!-- Laptop demo gif -->
+<br/>
+ <img src="https://github.com/elroi99/tinyHouse/blob/main/laptop%20demo.gif" wiidth="600px" />
+
+ 
+ <!-- Mobile demo gif -->
+<p align="center">
+ 	<img src="https://github.com/elroi99/tinyHouse/blob/main/mobile%20demo.gif" wiidth="900px" />
+</p>
+
+ 
+ <br/>
+ 
+ 
 # Technical Overview
 
 ## Technologies and Tools used.
