@@ -1,7 +1,6 @@
 # Tiny House
 A vacation rental listing website 
-# Live site
-Visit the live site at [Tiny House](https://tiny-house-clone.herokuapp.com/)
+# View Live site --> [Tiny House](https://tiny-house-clone.herokuapp.com/)
 
 #### Note that this project is a clone of [TinyHouse](https://www.tinyhouse.app/). Visit them and give them some love 
 
@@ -13,6 +12,37 @@ When I started building TinyHouse, I was familiar with most of the above technol
 
 While building TinyHouse, my main objective was to test my UI skills, and thus, I have attempted to create as close a copy to the original app as possible. Please do compare my project [Tiny House](https://tiny-house-clone.herokuapp.com/) with the original website [TinyHouse](https://www.tinyhouse.app/)
 
+# Visuals
+
+<!-- landing page image -->
+#
+<br/>
+ <img src="https://github.com/elroi99/tinyHouse/blob/main/landing%20page.png" wiidth="600px" style="border:1px solid black" />
+ 
+ #
+<!--  listing page -->
+ <br/>
+ <img src="https://github.com/elroi99/tinyHouse/blob/main/listings%20page.png" wiidth="600px" />
+ 
+ #
+ <!--  listings page image -->
+ <br/>
+ <img src="https://github.com/elroi99/tinyHouse/blob/main/listing%20page.png" wiidth="600px" />
+
+<!-- Laptop demo gif -->
+<br/>
+ <img src="https://github.com/elroi99/tinyHouse/blob/main/laptop%20demo.gif" wiidth="600px" />
+
+ 
+ <!-- Mobile demo gif -->
+<p align="center">
+ 	<img src="https://github.com/elroi99/tinyHouse/blob/main/mobile%20demo.gif" wiidth="900px" />
+</p>
+
+ 
+ <br/>
+ 
+ 
 # Technical Overview
 
 ## Technologies and Tools used.
@@ -52,7 +82,7 @@ While building TinyHouse, my main objective was to test my UI skills, and thus, 
 ## Dependencies
 - Node.JS -- Make sure you have Node.js installed on your machine. 
 - NPM ( Node Package Manager ) -- We will be using Node.js and NPM to run the project.
-- Although not a npm package, We will need create a firebase project.  
+<!-- - Although not a npm package, We will need create a firebase project.   -->
 
 
 ## Installation Instructions
@@ -60,10 +90,10 @@ While building TinyHouse, my main objective was to test my UI skills, and thus, 
 1. Get a copy of the project on your local machine by running the following command
 	 `git clone https://github.com/elroi99/tinyHouse.git`
 2. Enter the project directory 
-	 `cd tinyHouse`
+	 `cd tiny-house`
 3. install dependencies using npm
 	 `npm install`
-4. create your own firebase project to get your own firebase keys 
+<!-- 4. create your own firebase project to get your own firebase keys 
 5. replace the current firebaseConfig object with the object from your new firebase project.
 	the firebaseConfig obj looks similar to below object and is inside the firebase.js file at src/firebase/
 	```
@@ -76,8 +106,9 @@ While building TinyHouse, my main objective was to test my UI skills, and thus, 
 	  appId: "1:4d4232fdd37o7986"
 	};
 	```
-6. once you have added your own firebaseConfig object, the app is ready to Rock and Roll !!
-7. Run the project 
+6. once you have added your own firebaseConfig object, the app is ready to Rock and Roll !! -->
+4. The code is now ready to Rock and Roll !!
+5. Run the project 
 	 `npm start`
 	 
 Give it some time ...... Breathe in .. Breathe out.  
