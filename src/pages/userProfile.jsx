@@ -208,7 +208,7 @@ const UserProfile = () => {
                                             </Box>
                                             <Box sx={{ p : 3 }}>
                                                 <Typography variant="body1" noWrap="true" gutterBottom  sx={{ color : "#1D226C" , display : "inlineBlock" }}> { `$${currentPropertyDetails && currentPropertyDetails.propertyDetails.pricesPerDay}` } <Typography component={"span"} display="inline" sx={{ color : "#D1D1D1"}}>/day</Typography> </Typography>
-                                                <Typography sx={{  fontWeight : 300 , color : "grey.dark" }} > { currentPropertyDetails && currentPropertyDetails.propertyDetails.title } </Typography>
+                                                <Typography sx={{  fontWeight : 300 , color : "grey.dark" }} > { currentPropertyDetails && currentPropertyDetails.propertyDetails.title.substring(0 , 41 ) } </Typography>
                                                 <Typography gutterBottom sx={{ mb:1  , color : "grey.medium" }}> { currentPropertyDetails && currentPropertyDetails.propertyDetails.address } </Typography>
                                                 <Box display="flex"> 
                                                     <Box > 

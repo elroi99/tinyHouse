@@ -52,7 +52,6 @@ class User{
         this.userUid = userUid;
         this.propertiesArr = propertiesArr;
         this.bookingsArr = bookingsArr;
-        // some stripe stuff ??
     }
 }
 

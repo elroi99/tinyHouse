@@ -47,7 +47,7 @@ const Card = ( { cardDetails  } ) => {
             </Box>
             <Box sx={{ p : 3 }}>
                 <Typography variant="body1" noWrap="true" gutterBottom  sx={{ color : "#1D226C" , display : "inlineBlock"  }}> { `$${pricesPerDay}`} <Typography component={"span"} display="inline" sx={{ color : "#D1D1D1"}}>/day</Typography> </Typography>
-                <Typography textDecoratoin="none" sx={{ textDecoration : "none" , fontWeight : 300 , color : "grey.dark" }} > { title } </Typography>
+                <Typography textDecoratoin="none" sx={{ textDecoration : "none" , fontWeight : 300 , color : "grey.dark" }} > { title.substring(0 , 41) } </Typography>
                 <Typography gutterBottom sx={{ mb:1 , color : "grey.medium" }}> { address } </Typography>
                 <Box display="flex"> 
                     <Box > 

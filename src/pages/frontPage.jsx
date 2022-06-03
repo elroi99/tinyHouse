@@ -145,9 +145,10 @@ const FrontPage = () => {
                     }}>
 
                     {
-                        citiesUpper.map( (city) => {
+                        citiesUpper.map( (city , index) => {
                             return(
                                 <Link 
+                                key={ index }
                                 href= { `/listing/${city.cityName}` } 
                                 sx={{ textDecoration : "none" , color : "initial" }}
                                 onClick={ (e) => { 
@@ -205,7 +206,8 @@ const FrontPage = () => {
                         color : "white" , 
                         fontWeight : "300" , 
                         mx : "auto" , 
-                        ":hover" : { backgroundColor : "#61b3ff"} }}
+                        ":hover" : { backgroundColor : "#61b3ff" } 
+                    }}
                     onClick={ () => history.push("/listings/unitedStates")}
                     > 
                         Popular listings in the United States 
@@ -232,11 +234,11 @@ const FrontPage = () => {
                             {
                                 sampleListingCards 
                                 && 
-                                sampleListingCards.map(( listing) => {
+                                sampleListingCards.map(( listing , index) => {
                                         let { propertyUid , propertyDetails : { address , title , pricesPerDay , maxGuests , image }  } = listing;
 
                                     return(
-                                    <Card cardDetails = { listing } />
+                                    <Card cardDetails = { listing } key={index} />
                                     )
                                 })
                             }

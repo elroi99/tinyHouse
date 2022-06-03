@@ -43,11 +43,13 @@ import { auth } from "../firebase/firebase"
 
 // contexts
 import { authContext } from "../contexts/authContext";
+import { StayPrimaryPortraitOutlined } from "@mui/icons-material";
 
 const HostForm = () => {
 
     let [ formFieldValues , setFormFieldValues ] = useState({ homeType : "villa" , }); 
     let [ errors , setErrors ] = useState( { } );
+    let [ clickedOnAtLeastOnce , setClickedOnAtLeastOnce] = useState({ });
     let [ spinnerVisibility , setSpinnerVisibility ] = useState(false);
     // getting data from context
     let userData = useContext(authContext);
@@ -97,9 +99,10 @@ const HostForm = () => {
             id : 2,
             name : "maxGuests",
             groupLabel : "Max number of guests",
-            // placeholder : "4",
-            error : false,
+            placeholder : "4",
             type : "number",
+            validationPattern : new RegExp("^0-9]{1,2}$")
+
         },
         {
             id : 3,
@@ -108,9 +111,9 @@ const HostForm = () => {
             placeholder : "The iconic and luxurious Bel-Air mansion",
             helperText : "max character count of 45",
             type : "text",
-            error : false,
             required : true,
             fullWidth : true,
+            validationPattern : new RegExp("^[a-zA-Z0-9]{1,40}$")
         },
         {
             id : 4,
@@ -119,10 +122,10 @@ const HostForm = () => {
             placeholder : "Modern, clean and iconic home of the Fresh Prince. Situated in the heart of Bel-Air, Los Angeles",
             helperText : "max character count of 400",
             type : "text",
-            error : false,
-            multiline  : true,
+            // multiline  : true,
             fullWidth : true,
             maxWidth : "45ch",
+            validationPattern :  new RegExp("^[a-zA-Z0-9]{1,400}$") 
 
         },
         {
@@ -131,9 +134,9 @@ const HostForm = () => {
             groupLabel : "Address",
             placeholder : "251, North Brisol Avenue",
             type : "text",
-            error : false,
             fullWidth : true,
-
+            validationPattern : new RegExp("^[a-zA-Z0-9/-]{1,40}$"),
+            helperText : "maximum 40 characters"
         },
         {
             id : 6,
@@ -141,9 +144,9 @@ const HostForm = () => {
             groupLabel : "City/Town",
             placeholder : "Los Angeles",
             type : "text",
-            error : false,
             fullWidth : true,
-
+            helperText : "maximum 20 characters, no numbers or special characters allowed",
+            validationPattern : new RegExp("^[a-zA-Z]{1,20}$"),
         },
         {
             id : 7,
@@ -151,8 +154,10 @@ const HostForm = () => {
             groupLabel : "State/Province",
             placeholder : "Califorina",
             type : "text",
-            error : false,
             fullWidth : true,
+            helperText : "maximum 20 characters, no numbers or special characters allowed",
+            validationPattern : new RegExp("^[a-zA-Z]{1,20}$"),
+
         },
         {
             id : 8,
@@ -160,7 +165,9 @@ const HostForm = () => {
             groupLabel : "Zip/Postal Code",
             placeholder : "Please enter a zip code for your listing",
             type : "number",
-            error : false,
+            helperText : "maximum 8 characters, no numbers or special characters allowed",
+            validationPattern : new RegExp("^[0-9]{3,8}$"),
+
         },
         {
             id : 9,
@@ -168,7 +175,7 @@ const HostForm = () => {
             groupLabel : "Image",
             helperText : "images have to be under 1MB in size of type JPG or PNG",
             input : "fileUpload",
-            error : false,
+
         },
         {
             id : 10,
@@ -177,37 +184,51 @@ const HostForm = () => {
             placeholder : "120",
             helperText : "all prices in $USD/day",
             type : "number",
-            error : false,
+            validationPattern : new RegExp("^[0-9]{1,4}$"),
+
+
         },
 
     ] 
+    
+    // will help us with error highlighting
+    function updateSetClickedOnAtLeastOnce(e){
+        setClickedOnAtLeastOnce((clickedOnAtLeastOnce) => ({ ...clickedOnAtLeastOnce , [e.target.name] : true }) )
+    }
+
+    function getValidationPattern(name){
+        let itemObj = uniqueFormGroupProps.find((obj) =>  obj.name === name)
+        console.log(`found the validation pattern acc to name ${name} it is ${itemObj.validationPattern}`)
+        return itemObj.validationPattern;
+    }
+
+    // boolean return only. no side effects
+    function validateFn(sampleText , validationPattern){
+        // if validation pattern was not provided , or the validation pattern was provided and matches, validate as true. else false
+        if(validationPattern === undefined || validationPattern.test(sampleText) === true){
+            return true;
+        }
+        else{
+            return false;
+        }
+
+    }
     
     // in addition to updating the fields, will run validation on fields that need it ( ones that have the validationRegex key in their prop objects)
     function handleChange(e){
         let fieldName = e.target.name;
         let value = e.target.value;
-        // html does not have a concept of data types. everything in html is a string
-        // thus, we will have to convert the values of fields that should actually be a number; from string into a number ( using parseInt )
-        if(fieldName === "maxGuests" || fieldName === "pricePerDay"){
-            value = parseInt(value);
+        let validationPattern = getValidationPattern(fieldName)
+        console.log(`${clickedOnAtLeastOnce[fieldName]} clicked status`)
+
+        if( validateFn(value ,validationPattern ) === true){
+            // entry is valid, hence no error
+            setErrors((errors) => { return { ...errors , [e.target.name] : false}}  )
+        }else{
+            // entry is invalid, hence there's an error
+            setErrors((errors) => { return { ...errors , [e.target.name] : true} }) 
         }
 
-        // enforce the maxLength = 45 condition
-        if(fieldName === "title"){
-            value = value.slice(0 , 46);
-            console.log("enforcing the maxlength");
-            console.log(value);
-        }
-        // enforce the maxLength = 400 condition
-        if(fieldName === "description"){
-            value = value.slice(0 , 400);
-            console.log("enforcing the maxlength");
-            console.log(value);
-        }
-        // enforcing max length
-        console.log(`maxlength is ${e.target.maxlength}`)
-        console.log(fieldName);
-        console.log(value);
         setFormFieldValues({ ...formFieldValues , [fieldName] : value });
     }
 
@@ -309,6 +330,7 @@ const HostForm = () => {
                 {
                 uniqueFormGroupProps.map((fieldPropsObject) => {
                     let currName = fieldPropsObject.name;
+                    console.log(errors[fieldPropsObject.name]);
                     return(
                     <Box sx={{ mb : 3}} > 
                         <Typography display="inline" color="red"> * </Typography> 
@@ -319,10 +341,15 @@ const HostForm = () => {
                                 (fieldPropsObject.input != "fileUpload")
                                 && 
                                 <TextField 
-                                sx= { { display : "block" , mt : 1} } 
+                                sx= { { display : "block" , mt : 1 } } 
                                 value= { 
                                     formFieldValues[fieldPropsObject.name] || ""
                                 }
+                                error={ 
+                                    clickedOnAtLeastOnce[fieldPropsObject.name] 
+                                    && 
+                                    errors[fieldPropsObject.name]}
+                                onBlur={ updateSetClickedOnAtLeastOnce }
                                 onChange = { handleChange }
                                 size="small"
                                 { ...fieldPropsObject }
@@ -348,6 +375,7 @@ const HostForm = () => {
                                 <input
                                     accept="image/*"
                                     // className={fieldPropsObject.input}
+                                    
                                     id= {fieldPropsObject.input} 
                                     type="file"
                                     onChange={handleUploadClick}
